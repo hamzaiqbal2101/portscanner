@@ -4,7 +4,9 @@
 
 **A pure-Python, zero-dependency network port scanner for security analysis and penetration testing.**
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![CI](https://github.com/hamzaiqbal2101/portscanner/actions/workflows/ci.yml/badge.svg)](https://github.com/hamzaiqbal2101/portscanner/actions/workflows/ci.yml)
+[![Tests](https://img.shields.io/badge/tests-35%20passing-brightgreen)](#-testing)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)]()
 
@@ -40,6 +42,14 @@ banner grabbing, and exports results in JSON or CSV.
 It is designed both as a practical utility and as a reference implementation for learning
 how the different port-scanning techniques work under the hood.
 
+This is the fifth project in a cybersecurity portfolio:
+
+1. [Password Strength Checker](https://github.com/hamzaiqbal2101/password-strength-checker)
+2. [File Integrity Checker](https://github.com/hamzaiqbal2101/file-integrity-checker)
+3. [File Encryptor](https://github.com/hamzaiqbal2101/file-encryptor)
+4. [Subdomain Enumerator](https://github.com/hamzaiqbal2101/subdomain-enumerator)
+5. **Port Scanner** (this project)
+
 ---
 
 ## ✨ Features
@@ -62,7 +72,7 @@ how the different port-scanning techniques work under the hood.
 
 ### Prerequisites
 
-- **Python 3.8 or newer** — [download](https://www.python.org/downloads/)
+- **Python 3.10 or newer** — [download](https://www.python.org/downloads/)
 
 ### Option 1 — Install as a package (recommended)
 
@@ -251,6 +261,10 @@ portscanner/
 │   ├── ping.py           ICMP ping and subnet sweep
 │   ├── services.py       Service/version detection (banner grabbing)
 │   └── output.py         JSON / CSV export
+├── tests/
+│   └── test_portscanner.py  Pytest suite (35 tests, network fully mocked)
+├── .github/workflows/
+│   └── ci.yml            CI: pytest on Python 3.10–3.12
 ├── pyproject.toml        Packaging and console-script definition
 ├── .gitignore            Ignored files (cache, test artifacts)
 └── README.md             This file
@@ -259,6 +273,16 @@ portscanner/
 ---
 
 ## 🧪 Testing
+
+```bash
+# Install the test runner (only dependency, dev-only)
+pip install pytest
+
+# Run the full test suite (35 tests, fully mocked — no network needed)
+python -m pytest -v
+```
+
+Manual smoke tests:
 
 ```bash
 # Verify the CLI is importable and functional
