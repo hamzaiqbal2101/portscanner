@@ -65,7 +65,10 @@ def grab_banner(host, port, timeout=BANNER_TIMEOUT_DEFAULT):
 
     Returns (service_name, version_string) or (None, None).
     """
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    except (socket.error, OSError):
+        return None, None
     sock.settimeout(timeout)
     try:
         sock.connect((host, port))
