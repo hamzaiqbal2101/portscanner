@@ -13,7 +13,10 @@ def tcp_connect_scan(host, port, timeout=TCP_TIMEOUT_DEFAULT):
     Reliable on any platform and needs no special privileges.
     Returns True when the target accepts the connection.
     """
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    except (socket.error, OSError):
+        return False
     sock.settimeout(timeout)
     try:
         result = sock.connect_ex((host, port))
